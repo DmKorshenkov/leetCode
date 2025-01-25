@@ -20,10 +20,9 @@ Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 */
 import "fmt"
 func main(){
-	fmt.Println(palidromNumber(44244))
 }
 
-func palidromNumber(num int) bool{
+func isPalindrom(num int) bool{
 	if num < 0 {
 		return false
 	}
