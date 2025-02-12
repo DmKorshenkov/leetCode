@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 Symbol       Value
 I             1
@@ -11,14 +13,14 @@ D             500
 M             1000
 
 
-For example, 2 is written as II in Roman numeral, just two ones added together. 
-12 is written as XII, which is simply X + II. 
+For example, 2 is written as II in Roman numeral, just two ones added together.
+12 is written as XII, which is simply X + II.
 The number 27 is written as XXVII, which is XX + V + II.
 
-Roman numerals are usually written largest to smallest from left to right. 
-However, the numeral for four is not IIII. Instead, the number four is written as IV. 
-Because the one is before the five we subtract it making four. 
-The same principle applies to the number nine, which is written as IX. 
+Roman numerals are usually written largest to smallest from left to right.
+However, the numeral for four is not IIII. Instead, the number four is written as IV.
+Because the one is before the five we subtract it making four.
+The same principle applies to the number nine, which is written as IX.
 There are six instances where subtraction is used:
 
 I can be placed before V (5) and X (10) to make 4 and 9.
@@ -44,27 +46,13 @@ It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 // M
 func main() {
 	romanToInt("CMM")
+	var buff = make([]byte, 0, 2)
+	fmt.Println(cap(buff))
+	buff = nil
+	fmt.Println(cap(buff))
 }
 
-func romanToInt(got string) int{
-	return out
+func romanToInt(s string) int {
+	fmt.Println(s)
+	return 0
 }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
