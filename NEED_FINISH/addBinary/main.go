@@ -5,61 +5,46 @@ import (
 )
 
 func main() {
-	fmt.Println(addBinary("100", "0"))
+	fmt.Println(addBinary("1010", "111"))
 	//	fmt.Println(int('1'), int('0'))
 	//	fmt.Println(0 * degree(2, 1))
+	// fmt.Println(x)
 }
 
 func addBinary(a string, b string) string {
-	ln := len(a) - 1
-	bin := int(0)
-	for in := ln; in > -1; in-- {
-		bin += int(a[in]-48) * degree(2, in-ln)
-	}
-	ln = len(b) - 1
-	for in := ln; in > -1; in-- {
-		bin += int(b[in]-48) * degree(2, in-ln)
-	}
-	return strBin(bin)
-}
 
-func strBin(num int) string {
-	if num == 0 {
-		return "0"
+	//	bb := bytes.Buffer{}
+	max := len(b)
+
+	if len(a) > len(b) {
+		max = len(a)
 	}
-	var slB = make([]string, 1, num)
-	slB[0] = "0"
-	fmt.Println(num)
-	for n := 0; n < num; n++ {
-		for in := 0; in < len(slB); in++ {
-			if slB[in] == "0" {
-				slB[in] = "1"
-				break
-			} else {
-				slB[in] = "0"
-				slB = append(slB, "1")
-				break
-			}
+
+	fmt.Println(max)
+
+	arr := make([]int, max+1)
+
+	for i := 1; i < len(arr); i++ {
+
+		if len(a)-i >= 0 {
+			arr[i] += int(a[len(a)-i]) - 48
 		}
+		if len(b)-i >= 0 {
+			arr[i] += int(b[len(b)-i]) - 48
+		}
+
+	}
+	fmt.Println(arr)
+
+	for i := len(arr) - 1; i > 0; i-- {
+		if arr[i] > 1 {
+			arr[i] = 0
+			arr[i-1]++
+		}
+
 	}
 
-	///////
-	///////
-	//////
-	var str string
-	for in := len(slB) - 1; in > -1; in-- {
-		str += slB[in]
-	}
-	return str
-}
+	//	fmt.Println(arr)
 
-func degree(num int, degree int) int {
-	if degree == 0 {
-		return 1
-	}
-	for i := 1; i < degree; i++ {
-		num *= 2
-	}
-
-	return num
+	return ""
 }
