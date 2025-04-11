@@ -1,10 +1,12 @@
 package main
 
-import "fmt"
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
 func main() {
-	fmt.Println(pivotIndex([]int{2, 1, -1}))
-	fmt.Println(0 % 2)
+
 }
 
 func pivotIndex(nums []int) int {
