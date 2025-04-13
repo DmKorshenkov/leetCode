@@ -11,56 +11,41 @@ func main() {
 }
 
 func addStrings(num1 string, num2 string) string {
-
 	bb := bytes.Buffer{}
-	b2 := bytes.Buffer{}
-	n := int32(0)
+	max := len(num1)
 
-	if len(num1) > len(num2) {
-		max := len(num1) - 1
-		min := len(num2) - 1
+	if len(num2) > len(num1) {
+		max = len(num2)
+	}
+	var num byte
+	bytes := make([]byte, max+1)
+	for diff := 0; diff < max; diff++ {
+		if len(num1)-1-diff > -1 {
+			num += num1[len(num1)-1-diff] - 48
+		}
+		if len(num2)-1-diff > -1 {
+			num += num2[len(num2)-1-diff] - 48
+		}
 
-		for _ = 0; min > -1; min-- {
-			n += int32((num1[max] - 48) + (num2[min] - 48))
-			bb.WriteRune((n % 10) + 48)
-			n = n / 10
-			max--
-		}
-		for max > -1 {
-			fmt.Println(n)
-			n += int32(num1[max] - 48)
-			bb.WriteRune((n % 10) + 48)
-			n = n / 10
-			max--
-		}
-		if n == 1 {
-			bb.WriteRune('1')
-		}
-	} else {
-		max := len(num2) - 1
-		min := len(num1) - 1
+		bytes[len(bytes)-1-diff] = num % 10
 
-		for _ = 0; min > -1; min-- {
-			n += int32((num2[max] - 48) + (num1[min] - 48))
-			bb.WriteRune((n % 10) + 48)
-			n = n / 10
-			max--
-		}
-		for max > -1 {
-			fmt.Println(n)
-			n += int32(num2[max] - 48)
-			bb.WriteRune((n % 10) + 48)
-			n = n / 10
-			max--
-		}
-		if n == 1 {
-			bb.WriteRune('1')
+		if num/10 == 1 {
+			bytes[len(bytes)-1-diff-1] = 1
+			num = num / 10
+		} else {
+			num = 0
 		}
 	}
 
-	for in := bb.Len() - 1; in > -1; in-- {
-		b2.WriteByte(bb.Bytes()[in])
+	//	fmt.Println(bytes)
+
+	for i := 0; i < len(bytes); i++ {
+		if i == 0 && bytes[i] == 0 {
+			continue
+		}
+
+		bb.WriteByte(bytes[i] + 48)
 	}
 
-	return b2.String()
+	return bb.String()
 }

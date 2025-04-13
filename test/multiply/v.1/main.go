@@ -8,6 +8,9 @@ import (
 func main() {
 
 	fmt.Println(multiply("123", "456"))
+
+	//	fmt.Println(0 - 15)
+	//
 	// fmt.Println(999999999999 + 999)
 }
 
@@ -16,20 +19,25 @@ func multiply(num1 string, num2 string) string {
 	//	var n1 int
 	//	var n2 int
 	var x2 = 1
-
+	arr := make([]int, 0, 400)
 	for i := len(num2) - 1; i > -1; i-- {
 		x := 1
 		//		n2 = (int(num2[i]) - 48) * x2
 		for j := len(num1) - 1; j > -1; j-- {
 			//			n1 = (int(num1[j]) - 48) * x
 			fmt.Println((int(num1[j]) - 48) * x * (int(num2[i]) - 48) * x2)
-			res += (int(num1[j]) - 48) * x * (int(num2[i]) - 48) * x2
+			res = (int(num1[j]) - 48) * x * (int(num2[i]) - 48) * x2
+			arr = append(arr, res)
 			x *= 10
 		}
 		x2 *= 10
 
 	}
-	fmt.Println()
+
+	res = 0
+	for i := range arr {
+		res += arr[i]
+	}
 	fmt.Println(res)
 	return ""
 }
