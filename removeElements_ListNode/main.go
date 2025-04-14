@@ -46,3 +46,16 @@ func removeElementsInPlace(head *ListNode, val int) *ListNode {
 
 	return head
 }
+
+func removeElementsRecursive(head *ListNode, val int) *ListNode {
+	if head == nil {
+		return nil
+	}
+
+	head.Next = removeElements(head, val)
+
+	if head.Val == val {
+		return head.Next
+	}
+	return head
+}
