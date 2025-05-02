@@ -1,4 +1,6 @@
-func productExceptSelf(nums []int) []int {
+package main
+
+func productExceptSelf2(nums []int) []int {
 	//	fmt.Println(nums)
 	arr := make([]int, len(nums))
 	arr[0] = 1
