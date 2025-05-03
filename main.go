@@ -1,19 +1,18 @@
-func clearDigits(s string) string {
+package main
+
+func clearDigits2(s string) string {
 	sB := make([]byte, 0, len(s))
 
 	for i := 0; i < len(s); i++ {
-        
-        if s[i] >= 48 && s[i] <= 57 {
-            sB = sB[:len(sB)-1]
-        } else {
-            sB = append(sB, s[i])
-        }
-    }
+
+		if s[i] >= 48 && s[i] <= 57 {
+			sB = sB[:len(sB)-1]
+		} else {
+			sB = append(sB, s[i])
+		}
+	}
 	return string(sB)
 }
-
-
-
 
 func clearDigits(s string) string {
 	//	sB := []byte{}

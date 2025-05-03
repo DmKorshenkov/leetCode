@@ -5,6 +5,19 @@ func main() {
 }
 
 func singleNumber(nums []int) int {
+    var res int
+    
+    res = 0
+
+    for _, n := range nums {
+        res ^= n
+    }
+    return res
+}
+
+
+
+func singleNumber(nums []int) int {
    if len(nums) == 1 {
     return nums[0]
    }
