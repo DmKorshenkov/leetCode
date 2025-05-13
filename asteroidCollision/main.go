@@ -1,4 +1,42 @@
 func asteroidCollision(asteroids []int) []int {
+	stack := []int{}
+
+	for _, a := range asteroids {
+		if len(stack) == 0 {
+			stack = append(stack, a)
+			continue
+		}
+
+		for len(stack) != 0 {
+			last := stack[len(stack)-1]
+			if a < 0 && last > 0 {
+				if -a > last {
+					stack = stack[:len(stack)-1]
+					if len(stack) == 0 {
+						stack = append(stack, a)
+						break
+					}
+
+				} else if -a == last {
+					stack = stack[:len(stack)-1]
+					break
+				} else {
+					break
+				}
+			} else {
+				stack = append(stack, a)
+				break
+			}
+
+		}
+	}
+	return stack
+}
+
+
+
+
+func asteroidCollision(asteroids []int) []int {
 	stack := make([]int, 0, len(asteroids))
 
 	stack = append(stack, asteroids[0])
