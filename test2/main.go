@@ -13,19 +13,19 @@
 		}
 		arr = append(arr, sum)
 	}
-
+//	fmt.Println(arr)
 	for i := range arr {
 		if arr[i] >= 10 {
-			arr[i] = 0
-			if i+1 > len(arr)-1 {
+			arr[i] = arr[i] % 10
+			if i == len(arr)-1 {
 				arr = append(arr, 0)
 			}
 			arr[i+1]++
 		}
 	}
-	//	fmt.Println(len(arr))
+//	fmt.Println(len(arr), arr)
 	l3 := head.Next
-	for i := len(arr) - 1; i > -1; i-- {
+	for i := len(arr) - 0; i < len(arr); i++ {
 		//		fmt.Println(arr[i])
 		l3.Val = arr[i]
 		if i == 0 {
