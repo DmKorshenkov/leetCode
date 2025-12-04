@@ -1,29 +1,24 @@
-func findDuplicates(nums []int) []int {
-		res := make([]int, 0, 2)
+func findDuplicates(nums []int) []int {		
+	res := make([]int, 0, 2)
 		for i := range nums {
-			in := abs(nums[i]) - 1
-			if nums[in] > 0 {
-				nums[in] = -nums[in]
-			}
-			//		if nums[i] > 0 {
-			//			nums[nums[i]] = (-nums[nums[i]])
-			//		} else {
+			tmp := abs(nums[i])
 
-//			fmt.Println(nums)
+			if nums[tmp-1] < 0 {
+				res = append(res, tmp)
+			} else {
+				nums[tmp-1] *= -1
+			}
+//			fmt.Println(nums, res)
 		}
 
-//		fmt.Println(nums)
-		for i := range nums {
-			if nums[i] > 0 {
-				res = append(res, nums[i])
-			}
-		}
+//		fmt.Println(nums, res)
 		return res
 }
 
 func abs(n int) int {
-    if n < 0 {
-        return -n
-    }
-    return n
+
+	if n < 0 {
+		return -n
+	}
+	return n
 }
