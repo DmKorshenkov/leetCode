@@ -3,23 +3,29 @@ package main
 func main() {
 
 }
-
 func findAnagrams(s string, p string) []int {
     answer := []int{}
-    ln := len(p)
-    bp := []byte(p)
-    slices.Sort(bp)
-    for i := 0; i + (ln-1) < len(s); i++ {
-        bs := []byte(s[i:i+ln])
-        slices.Sort(bs)
-        if bs[0] == bp[0] && eq(bs, bp) {
-            answer = append(answer, i)
+    bp := make([]int, 26)
+    bs := make([]int, 26)
+    lnP := len(p)
+    for i := range p {
+        bp[p[i]-97]++
+    }
+
+    for i := 0; i < len(s); i++ {
+        c := int(s[i]-97)
+        bs[c]++
+        if i >= lnP {
+            bs[int(s[i-lnP]-97)]--
+        }
+        if bp[c] > 0 && eq(bs, bp) {
+            answer = append(answer, i-lnP+1)
         }
     }
     return answer
 }
 
-func eq(s []byte, p []byte) bool{
+func eq(s []int, p []int) bool{
     for i := range s {
         if s[i] != p[i] {
             return false
