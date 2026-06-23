@@ -1,15 +1,21 @@
-func maximumProduct(arr []int) int {
-    ln := len(arr)
-    for i := 1; i < ln; i++ {
-        key := arr[i]
+func maximumProduct(nums []int) int {
+	min1, min2 := 1001, 1001
+	max1, max2, max3 := -1001, -1001, -1001
+	for _, num := range nums {
+		if num < min1 {
+			min1, min2 = num, min1
+		} else if num < min2 {
+			min2 = num
+		}
 
-        j := i - 1
-        for j >= 0 && arr[j] > key {
-            arr[j+1] = arr[j]
-            j--
-        }
-        arr[j+1] = key
-    }
+		if num > max1 {
+			max1, max2, max3 = num, max1, max2
+		} else if num > max2 {
+			max2, max3 = num, max2
+		} else if num > max3 {
+			max3 = num
+		}
+	}
 
-    return max(arr[ln-1]*arr[ln-2]*arr[ln-3], arr[0]*arr[1]*arr[ln-1])
+	return max(min1*min2*max1, max1*max2*max3)
 }
