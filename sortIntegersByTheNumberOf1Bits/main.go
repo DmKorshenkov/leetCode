@@ -21,3 +21,16 @@ func firstBit(n int) (pos int) {
     }
     return
 }
+
+func sortByBitsII(arr []int) []int {
+
+    sort.Slice(arr, func(i,j int) bool {
+        if firstBit(arr[j]) < firstBit(arr[i]) {
+            return false
+        } else if firstBit(arr[j]) == firstBit(arr[i]) && arr[j] < arr[i] {
+            return false
+        }
+        return true
+    })
+    return arr
+}
